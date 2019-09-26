@@ -1,0 +1,35 @@
+<div class="d-flex align-items-center">
+  <h1>deli boards</h1>
+  <div class="ml-auto boards__linkBox">
+    <%= link_to 'Create article', new_article_path, class: 'btn btn-outline-dark' %>
+  </div>
+</div>
+
+<table class="table table-hover boards__table">
+  <thead class="thead-dark">
+    <tr>
+      <th>title</th>
+      <th>content</th>
+      <th>creator</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+    <tr>
+      <td>
+        <%= article.title %>
+      </td>
+      <td>
+        <%= article.body.truncate(10) %>
+      </td>
+      <td>
+        <%= article.name %>
+      </td>
+      <td>
+        <%= link_to 'detail', article, class: 'btn btn-outline-dark' %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

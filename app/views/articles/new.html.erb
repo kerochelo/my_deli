@@ -1,0 +1,30 @@
+<div class="d-flex align-items-center">
+  <h1>create deli</h1>
+  <div class="ml-auto boards__linkBox">
+    <%= link_to 'Top Board', articles_path, class: 'btn btn-outline-dark' %>
+  </div>
+</div>
+<%= form_for @article do |f| %>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :title, 'Title' %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= f.label :name, 'Name' %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :url, 'Homepage URL' %>
+    <%= f.text_field :url, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :body, 'Body' %>
+    <%= f.text_area :body, class: 'form-control' %>
+  </div>
+  <%= f.submit 'Post', class: 'btn btn-primary' %>
+<% end %>
+<form>
+
+</form>

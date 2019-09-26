@@ -25,17 +25,21 @@ secret
 	- like board
 
 ## dev internal design
-> view, action
+> view
 - top
+	- login form(*1)
+	- to create user form(*1)
 - board
+	- search articles
 	- articles
-	- create article
+	- to create article(*2)
 - article
-	- edit(include delete)
+	- article
+	- create comment
+	- to edit this(*2)
 - setting
-	- setting user info
-	- setting tag
-- login
+	- user setting(*1)
+	- tag setting
 > db model
 - users
 |name|type|etc|
@@ -53,7 +57,7 @@ secret
 |title|string|not null|
 |url|string| |
 |body|text| |
-|area|string| |
+|area_id|string| |
 |created_at|datetime|not null|
 |updated_at|datatime|not null|
 - comments
@@ -80,14 +84,14 @@ secret
 |tag_id|integer|not null|
 |created_at|datetime|not null|
 |updated_at|datatime|not null|
-- prefecture(active_hash)
+- prefecture("active_hash")
 |name|type|etc|
 |:-:|:-:|:-:|
 |id|integer|not null, primary key|
 |name|string|not null|
 |created_at|datetime|not null|
 |updated_at|datatime|not null|
-- article_prefecture_relations
+- article_prefecture_relations(may not use)
 |name|type|etc|
 |:-:|:-:|:-:|
 |id|integer|not null, primary key|
