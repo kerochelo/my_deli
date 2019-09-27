@@ -37,6 +37,7 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'mini_racer'
 gem 'kaminari'
+gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'rails-i18n'
 gem 'active_hash'
 

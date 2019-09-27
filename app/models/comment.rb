@@ -22,5 +22,5 @@ class Comment < ApplicationRecord
   belongs_to :article
 
   validates :name, length: {maximum: 30}
-  validates :comment, presense: true, length: {maximum: 1000}
+  validates :comment, presence: true, length: {maximum: 1000}
 end

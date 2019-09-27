@@ -1,16 +1,23 @@
 <div class="d-flex align-items-center">
-  <h1>deli boards</h1>
+  <h1>DELI Database</h1>
   <div class="ml-auto boards__linkBox">
-    <%= link_to 'Create article', new_article_path, class: 'btn btn-outline-dark' %>
+    <%= link_to '新規投稿', new_article_path, class: 'btn btn-outline-dark' %>
   </div>
 </div>
 
+<% if flash[:notice] %>
+  <div class="alert alert-danger">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<%= paginate @articles %>
 <table class="table table-hover boards__table">
   <thead class="thead-dark">
     <tr>
-      <th>title</th>
-      <th>content</th>
-      <th>creator</th>
+      <th>タイトル</th>
+      <th>内容</th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -24,12 +31,13 @@
         <%= article.body.truncate(10) %>
       </td>
       <td>
-        <%= article.name %>
+        <%= link_to '詳細', article, class: 'btn btn-outline-dark' %>
       </td>
       <td>
-        <%= link_to 'detail', article, class: 'btn btn-outline-dark' %>
+        <%= link_to '削除', article, class: 'btn btn-outline-dark', method: :delete %>
       </td>
     </tr>
     <% end %>
   </tbody>
 </table>
+<%= paginate @articles %>

@@ -15,6 +15,7 @@
 class Article < ApplicationRecord
   has_many :comments
   validates :name, length: {maximum: 30}
-  validates :title, length: {maximum: 50}
+  validates :url, length: {maximum: 200}
+  validates :title, presence: true, length: {maximum: 50}
   validates :body, length: {maximum: 1000}
 end
