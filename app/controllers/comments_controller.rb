@@ -13,6 +13,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    comment = Comment.find(params[:id])
+    comment.delete
+    redirect_to comment.article, flash: {notice: "コメント削除しました"}
   end
 
   private

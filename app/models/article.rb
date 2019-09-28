@@ -13,7 +13,9 @@
 #
 
 class Article < ApplicationRecord
-  has_many :comments
+  has_many :comments, dependent: :delete_all
+  has_many :article_tag_relations, dependent: :delete_all
+  has_many :tags, through: :article_tag_relations
   validates :name, length: {maximum: 30}
   validates :url, length: {maximum: 200}
   validates :title, presence: true, length: {maximum: 50}

@@ -9,4 +9,13 @@ if Rails.env == 'development'
   (1..50).each do |i|
     Article.create(name: "user#{i}", title: "title#{i}", url: "url#{i}", body: "body#{i}")
   end
+
+  Tag.create([
+    {name: "和食"},
+    {name: "中華"},
+    {name: "フレンチ"},
+    {name: "イタリアン"},
+    {name: "B級"},
+    {name: "高級"}
+  ])
 end

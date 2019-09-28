@@ -2,7 +2,8 @@ class ArticlesController < ApplicationController
   before_action :set_target_article, only: %i[show edit update destroy]
 
   def index
-    @articles = Article.page(params[:page]).order( created_at: "DESC",updated_at: "DESC")
+    @articles = params[:tag_id].present? ? Tag.find(params[:tag_id]).articles : Article.all
+    @articles = @articles.page(params[:page]).order(created_at: "DESC", updated_at: "DESC")
   end
 
   def new
@@ -31,13 +32,19 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article.update(article_params)
-
-    redirect_to article
+    if @article.update(article_params)
+      redirect_to @article, flash: {
+        notice: "[#{@article.title}]を更新しました"
+      }
+    else
+      flash[:article] = @article
+      flash[:error_messages] = @article.errors.full_messages
+      redirect_back(fallback_location: @article)
+    end
   end
 
   def destroy
-    @article.delete
+    @article.destroy
 
     redirect_to articles_path, flash: {notice: "[#{@article.title}]を削除しました"}
   end
@@ -45,7 +52,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:name, :title, :url, :body)
+    params.require(:article).permit(:name, :title, :url, :body, tag_ids: [])
   end
 
   def set_target_article

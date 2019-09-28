@@ -1,7 +1,7 @@
 <%= render 'shared/error_messages' %>
 <div class="p-comment__formBox">
   <p class="p-comment__formTitle">コメント投稿</p>
-  <%= form_for comment do |f| %>
+  <%= form_with model: comment do |f| %>
     <%= f.hidden_field :article_id %>
     <div class="form-group">
       <%= f.label :name, '名前' %>
