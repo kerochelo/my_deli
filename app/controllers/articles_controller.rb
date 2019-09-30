@@ -2,7 +2,10 @@ class ArticlesController < ApplicationController
   before_action :set_target_article, only: %i[show edit update destroy]
 
   def index
-    @articles = params[:tag_id].present? ? Tag.find(params[:tag_id]).articles : Article.all
+    @articles = Article.all
+    # うまく直したい
+    @articles = Tag.find(params[:tag_id]).articles if params[:tag_id].present?
+    @articles = @articles.where(prefecture_id: params[:prefecture_id]) if params[:prefecture_id].present?
     @articles = @articles.page(params[:page]).order(created_at: "DESC", updated_at: "DESC")
   end
 
@@ -52,7 +55,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:name, :title, :url, :body, tag_ids: [])
+    params.require(:article).permit(:name, :title, :url, :body, :prefecture_id, tag_ids: [])
   end
 
   def set_target_article

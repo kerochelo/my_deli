@@ -11,6 +11,16 @@
                       }
        %>
     <% end %>
+    <%= form_with url: articles_path, method: :get, class: 'articles__searchForm' do %>
+      <%= select_tag :prefecture_id,
+                      options_from_collection_for_select(Prefecture.all, :id, :name, params[:prefecture_id]),
+                      {
+                        prompt: '地域で絞り込む',
+                        class: 'form-control articles__select',
+                        onchange: 'submit(this.form)'
+                      }
+       %>
+    <% end %>
     <%= link_to '新規投稿', new_article_path, class: 'btn btn-outline-dark' %>
   </div>
 </div>
@@ -38,7 +48,7 @@
         <%= article.title %>
       </td>
       <td>
-        <%= article.body.truncate(10) %>
+        <%= article.body.truncate(10) if article.body != nil %>
       </td>
       <td>
         <%= link_to '詳細', article, class: 'btn btn-outline-dark' %>
