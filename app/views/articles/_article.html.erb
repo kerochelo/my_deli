@@ -1,19 +1,19 @@
 <div class="card">
   <div class="card-header">
-    <span><%= article.prefecture.name %></span>
+    <span><%= article.prefecture.name if article.prefecture_id.present? %></span>
     <h4><%= article.title %></h4>
     <% article.tags.each do |tag| %>
       <span class="badge badge-info"><%= tag.name %></span>
     <% end %>
-    <p class="card-text"><%= article.url %></p>
+    <p><%= link_to '他サイト', article.url, target: '_blank' if article.url.present? %></p>
   </div>
   <div class="card-body">
-    <p class="card-text"><%= simple_format(article.body) %></p>
-    <p class="text-right font-weight-bold mr-10"><%= article.name %></p>
+    <p class="card-text"><%= simple_format(article.body) if article.body.present? %></p>
+    <p class="text-right font-weight-bold mr-10"><%= article.name if article.name.present? %></p>
   </div>
 </div>
 
 <div class="p-comment__list">
   <div class="p-comment__listTitle">コメント</div>
   <%= render @article.comments %>
-</div> 
+</div>

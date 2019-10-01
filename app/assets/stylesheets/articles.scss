@@ -1,6 +1,6 @@
 .articles__table {
-  tr:hover {
-    cursor: pointer;
+  a:hover {
+   cursor: pointer;
   }
 }
 
@@ -16,5 +16,6 @@
 
 .articles__select{
   display: inline-block;
+  margin-right: 20px;
   width: auto;
 }

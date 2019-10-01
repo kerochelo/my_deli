@@ -5,13 +5,11 @@
       <%= select_tag :tag_id,
                       options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
                       {
-                        prompt: '種類で絞り込む',
+                        prompt: 'ジャンルで絞り込む',
                         class: 'form-control articles__select',
                         onchange: 'submit(this.form)'
                       }
        %>
-    <% end %>
-    <%= form_with url: articles_path, method: :get, class: 'articles__searchForm' do %>
       <%= select_tag :prefecture_id,
                       options_from_collection_for_select(Prefecture.all, :id, :name, params[:prefecture_id]),
                       {
@@ -21,7 +19,7 @@
                       }
        %>
     <% end %>
-    <%= link_to '新規投稿', new_article_path, class: 'btn btn-outline-dark' %>
+   <%= link_to '新規投稿', new_article_path, class: 'btn btn-outline-dark' %>
   </div>
 </div>
 
@@ -35,26 +33,22 @@
 <table class="table table-hover articles__table">
   <thead class="thead-dark">
     <tr>
-      <th>タイトル</th>
-      <th>内容</th>
-      <th></th>
-      <th></th>
+      <th class="col-md-8">タイトル</th>
+      <th class="col-md-2"></th>
+      <th class="col-md-2"></th>
     </tr>
   </thead>
   <tbody>
     <% @articles.each do |article| %>
     <tr>
-      <td>
+      <td class="col-md-8">
         <%= article.title %>
       </td>
-      <td>
-        <%= article.body.truncate(10) if article.body != nil %>
+      <td class="col-md-2">
+        <%= link_to '詳細', article, class: 'btn btn-outline-info' %>
       </td>
-      <td>
-        <%= link_to '詳細', article, class: 'btn btn-outline-dark' %>
-      </td>
-      <td>
-        <%= link_to '削除', article, class: 'btn btn-outline-dark', method: :delete %>
+      <td class="col-md-2">
+        <%= link_to '削除', article, class: 'btn btn-outline-dark', method: :delete, data: {confirm: '削除してもよろしいでしょうか'} %>
       </td>
     </tr>
     <% end %>
