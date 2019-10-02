@@ -2,10 +2,10 @@ class ArticlesController < ApplicationController
   before_action :set_target_article, only: %i[show edit update destroy]
 
   def index
-    @articles = Article.all
     # うまく直したい
-    @articles = Tag.find(params[:tag_id]).articles if params[:tag_id].present?
+    @articles = params[:tag_id].present? ? Tag.find(params[:tag_id]).articles : Article.all
     @articles = @articles.where(prefecture_id: params[:prefecture_id]) if params[:prefecture_id].present?
+    @articles = word_search(@articles, params[:free_word]) if params[:free_word].present?
     @articles = @articles.page(params[:page]).order(created_at: "DESC", updated_at: "DESC")
   end
 
@@ -54,11 +54,40 @@ class ArticlesController < ApplicationController
 
   private
 
+  # strong_params
   def article_params
     params.require(:article).permit(:name, :title, :url, :body, :prefecture_id, tag_ids: [])
   end
 
+  #before_action
   def set_target_article
     @article = Article.find(params[:id])
   end
+
+  # 複数検索用
+  def word_search(base_model ,word_params)
+    free_word = word_params
+    if free_word.present?
+      words = free_word.to_s.split(" ")
+      columns = ["title", "body"]
+      query = []
+      result = []
+
+      columns.each do |col|
+        query << ["#{col} LIKE ?"]
+      end
+
+      words.each_with_index do |word, index|
+        if index == 0
+          result[index] = base_model.where([query.join(" OR "), "%#{word}%", "%#{word}%"])
+        else
+          result[index] = result[index-1].where([query.join(" OR "), "%#{word}%", "%#{word}%"])
+        end
+      end
+      return result[words.length-1]
+    else
+      base_model
+    end
+  end
+
 end

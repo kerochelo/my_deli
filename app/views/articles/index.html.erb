@@ -9,7 +9,7 @@
                         class: 'form-control articles__select',
                         onchange: 'submit(this.form)'
                       }
-       %>
+      %>
       <%= select_tag :prefecture_id,
                       options_from_collection_for_select(Prefecture.all, :id, :name, params[:prefecture_id]),
                       {
@@ -17,9 +17,14 @@
                         class: 'form-control articles__select',
                         onchange: 'submit(this.form)'
                       }
-       %>
+      %>
+      <%= text_field_tag :free_word, params[:free_word],
+                          {
+                            class: 'form-control articles__text',
+                            onBlur: 'submit(this.form)'
+                          }
+      %>
     <% end %>
-   <%= link_to '新規投稿', new_article_path, class: 'btn btn-outline-dark' %>
   </div>
 </div>
 
@@ -29,7 +34,7 @@
   </div>
 <% end %>
 
-<%= paginate @articles %>
+<span class="total_count"><%= @articles.total_count %>件</span>
 <table class="table table-hover articles__table">
   <thead class="thead-dark">
     <tr>

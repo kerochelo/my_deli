@@ -8,10 +8,18 @@
     <ul class="navbar-nav mr-auto">
       <%= header_link_item('TOP', articles_path) %>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          記事
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenu">
+            <%= link_to '新規投稿', new_article_path, class: 'dropdown-item' %>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           ユーザ
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownUser">
           <% if @current_user %>
             <%= link_to 'マイページ', mypage_path, class: 'dropdown-item' %>
             <%= link_to 'ログアウト', logout_path, method: :delete, class: 'dropdown-item' %>
@@ -22,11 +30,5 @@
         </div>
       </li>
     </ul>
-<%#
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-%>
   </div>
 </nav>

@@ -10,12 +10,16 @@
   }
 }
 
-.articles__searchForm{
+.articles__searchForm {
   display: inline-block;
 }
 
-.articles__select{
+.articles__select, .articles__text {
   display: inline-block;
   margin-right: 20px;
   width: auto;
+}
+
+span.total_count{
+  float: right;
 }
