@@ -1,0 +1,22 @@
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  %a.navbar-brand{:href => "#"} DELI DB
+  %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    %ul.navbar-nav.mr-auto
+      = header_link_item('TOP', articles_path)
+      %li.nav-item.dropdown
+        %a#navbarDropdownMenu.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          board
+        .dropdown-menu{"aria-labelledby" => "navbarDropdownMenu"}
+          = link_to 'new post', new_article_path, class: 'dropdown-item'
+      %li.nav-item.dropdown
+        %a#navbarDropdownUser.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          user
+        .dropdown-menu{"aria-labelledby" => "navbarDropdownUser"}
+          - if @current_user
+            = link_to 'mypage', mypage_path, class: 'dropdown-item'
+            = link_to 'logout', logout_path, method: :delete, class: 'dropdown-item'
+          - else
+            = link_to 'create user', new_user_path, class: 'dropdown-item'
+            = link_to 'login', root_path, class: 'dropdown-item'

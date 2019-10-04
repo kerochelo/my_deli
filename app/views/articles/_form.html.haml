@@ -1,0 +1,30 @@
+= render 'shared/error_messages'
+= form_with model: article do |f|
+  .form-row
+    .form-group.col-md-6
+      = f.label :title, 'title'
+      = f.text_field :title, class: 'form-control'
+    .form-group.col-md-6
+      = f.label :name, 'name'
+      = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :url, 'url'
+    = f.text_field :url, class: 'form-control'
+  .form-group
+    = f.label :body, 'body'
+    = f.text_area :body, class: 'form-control', row: 10
+  .form-group
+    %span field
+    = f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag|
+      .form-check
+        = tag.label class: 'form-check-label' do
+          = tag.check_box class: 'form-check-input'
+          = tag.text
+  .form-group
+    %span area
+    = f.collection_select :prefecture_id, Prefecture.all, :id, :name, |
+      {                                                               |
+        prompt: 'prefecture',                                         |
+        class: 'form-control articles__select'                        |
+      }                                                               |
+  = f.submit 'save', class: 'btn btn-primary'

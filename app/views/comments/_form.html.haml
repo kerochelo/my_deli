@@ -1,0 +1,12 @@
+= render 'shared/error_messages'
+.p-comment__formBox
+  %p.p-comment__formTitle post comment
+  = form_with model: comment do |f|
+    = f.hidden_field :article_id
+    .form-group
+      = f.label :name, 'name'
+      = f.text_field :name, class:'form-control'
+    .form-group
+      = f.label :comment, 'body'
+      = f.text_area :comment, class:'form-control', rows: 4
+    = f.submit 'post', class: 'btn btn-primary'

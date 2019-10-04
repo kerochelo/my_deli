@@ -1,0 +1,9 @@
+%h1 lgoin
+= form_with scope: :session, url: login_path do |f|
+  .form-group
+    = f.label :name, 'user name'
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :password, 'password'
+    = f.password_field :password, class: 'form-control'
+  = f.submit 'login', class: 'btn btn-primary'

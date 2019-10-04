@@ -1,0 +1,13 @@
+.card
+  .card-header
+    %span= article.prefecture.name if article.prefecture_id.present?
+    %h4= article.title
+    - article.tags.each do |tag|
+      %span.badge.badge-info= tag.name
+    %p= link_to 'homepage', article.url, target: '_blank' if article.url.present?
+  .card-body
+    %p.card-text= simple_format(article.body) if article.body.present?
+    %p.text-right.font-weight-bold.mr-10= article.name if article.name.present?
+.p-comment__list
+  .p-comment__listTitle comment
+  = render @article.comments

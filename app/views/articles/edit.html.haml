@@ -1,0 +1,6 @@
+.d-flex.align-items-center
+  %h1 edit
+  .ml-auto.boards__linkBox
+    = link_to 'TOP', articles_path, class: 'btn btn-outline-dark'
+    = link_to 'detail', article_path(@article), class: 'btn btn-outline-dark'
+= render partial: 'form', locals: {article: @article}
