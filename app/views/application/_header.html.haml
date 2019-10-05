@@ -7,12 +7,12 @@
       = header_link_item('TOP', articles_path)
       %li.nav-item.dropdown
         %a#navbarDropdownMenu.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-          board
+          記事
         .dropdown-menu{"aria-labelledby" => "navbarDropdownMenu"}
           = link_to 'new post', new_article_path, class: 'dropdown-item'
       %li.nav-item.dropdown
         %a#navbarDropdownUser.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-          user
+          ユーザ
         .dropdown-menu{"aria-labelledby" => "navbarDropdownUser"}
           - if @current_user
             = link_to 'mypage', mypage_path, class: 'dropdown-item'

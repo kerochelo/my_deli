@@ -9,5 +9,5 @@
     %p.card-text= simple_format(article.body) if article.body.present?
     %p.text-right.font-weight-bold.mr-10= article.name if article.name.present?
 .p-comment__list
-  .p-comment__listTitle comment
+  .p-comment__listTitle コメント
   = render @article.comments

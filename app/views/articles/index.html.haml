@@ -23,5 +23,5 @@
         %td.col-md-2
           = link_to 'detail', article, class: 'btn btn-outline-info'
         %td.col-md-2
-          = link_to 'delete', article, class: 'btn btn-outline-dark', method: :delete, data: {confirm: 'delete ok'}
+          = link_to 'delete', article, class: 'btn btn-outline-dark', method: :delete, data: {confirm: '削除しますか?'}
 = paginate @articles

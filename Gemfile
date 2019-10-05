@@ -33,7 +33,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '>= 4.3.1'
 gem 'jquery-rails'
 gem 'mini_racer'
 gem 'kaminari'
@@ -50,6 +50,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rails-flog', require: 'flog'
   gem 'rspec-rails', '~> 3.8'
+  gem 'rails-controller-testing'
 end
 
 group :development do

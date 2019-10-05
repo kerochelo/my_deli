@@ -1,6 +1,6 @@
 = render 'shared/error_messages'
 .p-comment__formBox
-  %p.p-comment__formTitle post comment
+  %p.p-comment__formTitle コメント投稿
   = form_with model: comment do |f|
     = f.hidden_field :article_id
     .form-group
