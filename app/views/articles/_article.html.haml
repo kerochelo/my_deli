@@ -8,6 +8,7 @@
   .card-body
     %p.card-text= simple_format(article.body) if article.body.present?
     %p.text-right.font-weight-bold.mr-10= article.name if article.name.present?
+= render partial: "favorite_article_relations/favorite", locals: {article: article}
 .p-comment__list
   .p-comment__listTitle コメント
   = render @article.comments

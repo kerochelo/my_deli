@@ -15,7 +15,8 @@
 
 class User < ApplicationRecord
   has_secure_password
-
+  has_many :favorite_article_relations
+  has_many :fav_articles, through: :favorite_article_relations, source: :article
   validates :name,
     presence: true,
     uniqueness: true,
@@ -26,4 +27,21 @@ class User < ApplicationRecord
     }
   validates :password,
     length: {minimum: 8}
+
+  # add to favorite articles
+  def fav(article)
+    favorite_article_relations.find_or_create_by(article_id: article.id)
+  end
+
+  # remove from favorite articles
+  def unfav(article)
+    favorite = favorite_article_relations.find_by(article_id: article.id)
+    favorite.destroy if favorite
+  end
+
+  # check be added favorite articles
+  def is_fav?(article)
+    self.fav_articles.include?(article)
+  end
+
 end

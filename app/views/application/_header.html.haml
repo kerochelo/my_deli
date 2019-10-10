@@ -1,5 +1,5 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-  %a.navbar-brand{:href => "#"} DELI DB
+  %a.navbar-brand{:href => articles_path} DELI DB
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
@@ -20,3 +20,4 @@
           - else
             = link_to 'create user', new_user_path, class: 'dropdown-item'
             = link_to 'login', root_path, class: 'dropdown-item'
+  %i.fas.fa-apple-alt

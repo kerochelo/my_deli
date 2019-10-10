@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   describe 'GET #new' do
-    before { get :new }
+    before {get :new}
 
     it 'response code 200' do
       expect(response).to have_http_status(:ok)
@@ -15,6 +15,9 @@ RSpec.describe UsersController, type: :controller do
     it 'pass new object' do
       expect(assigns(:user)).to be_a_new User
     end
+  end
+
+  describe 'GET #show' do
   end
 
   describe 'POST #create' do

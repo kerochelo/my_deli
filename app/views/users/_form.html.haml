@@ -1,12 +1,12 @@
 = render partial: 'shared/error_messages'
 = form_with model: user do |f|
   .form-group
-    = f.label :name, 'user name'
+    = f.label :name, 'ユーザ名'
     = f.text_field :name, class: 'form-control'
   .form-group
-    = f.label :password, 'password'
+    = f.label :password, 'パスワード'
     = f.password_field :password, class: 'form-control'
   .form-group
-    = f.label :password_confirmation, 'password confirmation'
+    = f.label :password_confirmation, 'パスワード(確認)'
     = f.password_field :password_confirmation, class: 'form-control'
-  = f.submit 'create', class: 'btn btn-primary'
+  = f.submit '保存', class: 'btn btn-primary'

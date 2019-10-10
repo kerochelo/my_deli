@@ -105,6 +105,16 @@ secret
 |created_at|datetime|not null|
 |updated_at|datatime|not null|
 
+- favorite_article_relations
+
+|name|type|etc|
+|:-:|:-:|:-:|
+|id|integer|not null, primary key|
+|user_id|integer|not null|
+|article_id|integer|not null|
+|created_at|datetime|not null|
+|updated_at|datatime|not null|
+
 - prefecture(*active_hash*)
 
 |name|type|etc|

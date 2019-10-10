@@ -41,6 +41,7 @@ gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'rails-i18n'
 gem 'active_hash'
 gem 'hamlit-rails'
+gem 'font-awesome-sass', '~> 5.4.1'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

@@ -18,6 +18,8 @@ class Article < ApplicationRecord
   has_many :comments, dependent: :delete_all
   has_many :article_tag_relations, dependent: :delete_all
   has_many :tags, through: :article_tag_relations
+  has_many :favorite_article_relations, foreign_key: 'article_id', dependent: :delete_all
+  has_many :users, through: :favorite_article_relations, source: :user
   validates :name, length: {maximum: 30}
   validates :url, length: {maximum: 200}
   validates :title, presence: true, length: {maximum: 50}

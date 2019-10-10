@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_30_080508) do
+ActiveRecord::Schema.define(version: 2019_10_07_075035) do
 
   create_table "article_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "article_id"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 2019_09_30_080508) do
     t.index ["article_id"], name: "index_comments_on_article_id"
   end
 
+  create_table "favorite_article_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_favorite_article_relations_on_article_id"
+    t.index ["user_id", "article_id"], name: "index_favorite_article_relations_on_user_id_and_article_id", unique: true
+    t.index ["user_id"], name: "index_favorite_article_relations_on_user_id"
+  end
+
   create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -57,4 +67,6 @@ ActiveRecord::Schema.define(version: 2019_09_30_080508) do
   add_foreign_key "article_tag_relations", "articles"
   add_foreign_key "article_tag_relations", "tags"
   add_foreign_key "comments", "articles"
+  add_foreign_key "favorite_article_relations", "articles"
+  add_foreign_key "favorite_article_relations", "users"
 end
