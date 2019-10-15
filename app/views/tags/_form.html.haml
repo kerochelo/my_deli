@@ -1,0 +1,6 @@
+= render partial: 'shared/flash_messages'
+= form_with model: tag, class: 'tag__form' do |f|
+  .form-group
+    = f.label :name, 'タグ名'
+    = f.text_field :name, class: 'form-control'
+  = f.submit '保存', class: 'btn btn-primary'

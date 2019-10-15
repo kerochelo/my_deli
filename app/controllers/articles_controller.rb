@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   def index
     # うまく直したい
     @articles = params[:tag_id].present? ? Tag.find(params[:tag_id]).articles : Article.all
-    @articles = @articles.where(prefecture_id: params[:prefecture_id]) if params[:prefecture_id].present?
+    @articles = @articles.find_by(prefecture_id: params[:prefecture_id]) if params[:prefecture_id].present?
     @articles = word_search(@articles, params[:free_word]) if params[:free_word].present?
     @articles = @articles.page(params[:page]).order(created_at: "DESC", updated_at: "DESC")
   end
@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
     if article.save
       # redirect_to articles_path
       redirect_to article, flash: {
-        notice: "[#{article.title}]を投稿しました"
+        success: "[#{article.title}]を投稿しました"
       }
     else
       flash[:article] = article
@@ -37,7 +37,7 @@ class ArticlesController < ApplicationController
   def update
     if @article.update(article_params)
       redirect_to @article, flash: {
-        notice: "[#{@article.title}]を更新しました"
+        success: "[#{@article.title}]を更新しました"
       }
     else
       flash[:article] = @article
@@ -49,7 +49,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
 
-    redirect_to articles_path, flash: {notice: "[#{@article.title}]を削除しました"}
+    redirect_to articles_path, flash: {danger: "[#{@article.title}]を削除しました"}
   end
 
   private

@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       session[:user_id] = @user.id
       redirect_to mypage_path, flash: {
-        notice: "[ユーザ情報]を更新しました"
+        success: "[ユーザ情報]を更新しました"
       }
     else
       flash[:user] = @user

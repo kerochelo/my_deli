@@ -2,8 +2,6 @@
   .ml-auto.boards__linkBox
     = link_to 'TOP', articles_path, class: 'btn btn-outline-dark'
     = link_to '編集', edit_article_path(@article), class: 'btn btn-outline-dark'
-- if flash[:notice]
-  .alert.alert-success
-    = flash[:notice]
+= render partial: "shared/flash_messages"
 = render @article
 = render partial: "comments/form", locals: {comment: @comment}

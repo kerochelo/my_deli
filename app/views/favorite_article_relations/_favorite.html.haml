@@ -1,0 +1,12 @@
+- if @current_user
+  %span.favorite
+    - if @current_user.is_fav?(article)
+      = form_with model: article.favorite_article_relations.find_by(user_id: @current_user.id), method: :delete do |f|
+        = f.hidden_field :article_id
+        = button_tag(type: :submit, class: 'btn btn-outline-info') do
+          = content_tag(:soan, '', class: 'fas fa-heart')
+    - else
+      = form_with model: article.favorite_article_relations.build do |f|
+        = f.hidden_field :article_id
+        = button_tag(type: :submit, class: 'btn btn-outline-info') do
+          = content_tag(:span, '', class: 'far fa-heart')

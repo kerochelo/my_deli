@@ -1,0 +1,20 @@
+%h1= "#{@user.name} さんのマイページ"
+= render 'shared/flash_messages'
+- if @fav_articles.count > 0
+  %table.table.table-hover.articles__table
+    %thead.thead-dark
+      %tr
+        %th.col-md-10 title
+        %th.col-md-2
+    %tbody
+      - @fav_articles.each do |article|
+        %tr
+          %td.col-md-10
+            = article.title
+          %td.col-md-2
+            = link_to 'detail', article, class: 'btn btn-outline-info'
+- else
+  %p お気に入り記事はありません
+.row.user__btn
+  = link_to 'アカウント設定', "/users/#{@user.id}/edit", class: 'btn btn-info btn-lg btn-block'
+  = link_to 'タグ設定', tags_path, class: 'btn btn-info btn-lg btn-block'

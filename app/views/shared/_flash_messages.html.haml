@@ -1,0 +1,14 @@
+- if flash[:success]
+  .alert.alert-success
+    = flash[:success]
+- elsif flash[:notice]
+  .alert.alert-info
+    = flash[:notice]
+- elsif flash[:danger]
+  .alert.alert-warning
+    = flash[:danger]
+- elsif flash[:error_messages]
+  .alert.alert-danger
+    %ul
+      - flash[:error_messages].each do |msg|
+        %li= msg

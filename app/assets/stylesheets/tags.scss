@@ -1,0 +1,20 @@
+.tags__table, .tag__form {
+  width: 70%;
+  margin: 50px auto 0;
+  a:hover {
+   cursor: pointer;
+  }
+}
+
+.tag__name{
+  width: 70%;
+}
+
+.tag__btn{
+  width: 15%;
+  padding-right: 0;
+}
+
+.tags__linkBox{
+  display: inline-block;
+}

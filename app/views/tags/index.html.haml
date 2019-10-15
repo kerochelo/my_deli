@@ -1,0 +1,23 @@
+.d-flex.align-items-center
+  %h1 設定タグ一覧
+  .ml-auto.tags__linkBox
+    = link_to '新規タグ', new_tag_path, class: 'btn btn-info new__btn'
+= render partial: "shared/flash_messages"
+- if @tags.count > 0
+  %table.table.table_sm.table-hover.tags__table
+    %thead.thead_dark
+      %tr
+        %th.tag__name タグ名
+        %th.tag__btn
+        %th.tag__btn
+    %tbody
+      - @tags.each do |tag|
+        %tr
+          %td.tag__name
+            = tag.name
+          %td.tag__btn
+            = link_to '編集', edit_tag_path(tag), class: 'btn btn-outline-info'
+          %td.tag__btn
+            = link_to '削除', tag, class: 'btn btn-outline-dark', method: :delete, data: {confirm: "#{tag.name}削除しますか?"}
+- else
+  %p 登録タグがありません

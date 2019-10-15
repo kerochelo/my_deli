@@ -1,0 +1,5 @@
+.d-flex.align-items-center
+  %h1 タグ登録
+  .ml-auto.tags__linkBox
+    = link_to 'タグ一覧', tags_path, class: 'btn btn-outline-dark'
+= render partial: 'form', locals: {tag: @tag}

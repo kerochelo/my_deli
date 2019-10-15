@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :articles
   resources :comments, only: %i[create destroy]
   resources :favorite_article_relations, only: %i[create destroy]
+  resources :tags, only: %i[index new create edit update destroy]
 end
