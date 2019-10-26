@@ -1,5 +1,11 @@
 # deli database app
 
+## notice
+### settings environment variables
+
+database password
+google map api key
+
 ## definition document
 
 - concept

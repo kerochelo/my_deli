@@ -10,6 +10,7 @@ ja:
         title: タイトル
         url: URL
         body: 本文
+        address: 住所
       comment:
         name: 名前
         comment: コメント

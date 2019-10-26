@@ -4,11 +4,14 @@
     %h4= article.title
     - article.tags.each do |tag|
       %span.badge.badge-info= tag.name
-    %p= link_to 'homepage', article.url, target: '_blank' if article.url.present?
+    %p= link_to '詳細はこちら', article.url, target: '_blank' if article.url.present?
+    %p= article.address if article.address.present?
   .card-body
     %p.card-text= simple_format(article.body) if article.body.present?
     %p.text-right.font-weight-bold.mr-10= article.name if article.name.present?
 = render partial: "favorite_article_relations/favorite", locals: {article: article}
+- if article.address.present?
+  = render partial: "gmap"
 .p-comment__list
   .p-comment__listTitle コメント
   = render @article.comments

@@ -3,7 +3,10 @@
 # Table name: articles
 #
 #  id            :bigint           not null, primary key
+#  address       :string(255)
 #  body          :text(65535)
+#  latitude      :float(24)
+#  longitude     :float(24)
 #  name          :string(255)
 #  title         :string(255)      not null
 #  url           :string(255)

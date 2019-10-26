@@ -3,7 +3,10 @@
 # Table name: articles
 #
 #  id            :bigint           not null, primary key
+#  address       :string(255)
 #  body          :text(65535)
+#  latitude      :float(24)
+#  longitude     :float(24)
 #  name          :string(255)
 #  title         :string(255)      not null
 #  url           :string(255)
@@ -24,4 +27,6 @@ class Article < ApplicationRecord
   validates :url, length: {maximum: 200}
   validates :title, presence: true, length: {maximum: 50}
   validates :body, length: {maximum: 1000}
+  geocoded_by :address
+  after_validation :geocode
 end

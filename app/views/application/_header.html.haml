@@ -9,15 +9,16 @@
         %a#navbarDropdownMenu.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
           記事
         .dropdown-menu{"aria-labelledby" => "navbarDropdownMenu"}
-          = link_to 'new post', new_article_path, class: 'dropdown-item'
+          = link_to '新規投稿', new_article_path, class: 'dropdown-item'
+          = link_to '記事一覧', articles_path, class: 'dropdown-item'
       %li.nav-item.dropdown
         %a#navbarDropdownUser.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
           ユーザ
         .dropdown-menu{"aria-labelledby" => "navbarDropdownUser"}
-          - if @current_user
-            = link_to 'mypage', mypage_path, class: 'dropdown-item'
-            = link_to 'logout', logout_path, method: :delete, class: 'dropdown-item'
+          - if authenticated_user?
+            = link_to 'マイページ', mypage_path, class: 'dropdown-item'
+            = link_to 'ログアウト', logout_path, method: :delete, class: 'dropdown-item'
           - else
-            = link_to 'create user', new_user_path, class: 'dropdown-item'
-            = link_to 'login', root_path, class: 'dropdown-item'
+            = link_to '新規ユーザ登録', new_user_path, class: 'dropdown-item'
+            = link_to 'ログイン', root_path, class: 'dropdown-item'
   %i.fas.fa-apple-alt

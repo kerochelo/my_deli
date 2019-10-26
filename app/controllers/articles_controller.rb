@@ -29,6 +29,11 @@ class ArticlesController < ApplicationController
 
   def show
     @comment = Comment.new(article_id: @article.id)
+    # gmap params
+    @hash = Gmaps4rails.build_markers(@article) do |article, marker|
+      marker.lat article.latitude
+      marker.lng article.longitude
+    end
   end
 
   def edit
@@ -56,7 +61,7 @@ class ArticlesController < ApplicationController
 
   # strong_params
   def article_params
-    params.require(:article).permit(:name, :title, :url, :body, :prefecture_id, tag_ids: [])
+    params.require(:article).permit(:name, :title, :url, :body, :prefecture_id, :address, tag_ids: [])
   end
 
   #before_action

@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+  before_action :authenticate_user
   before_action :set_target_tag, only: %i[edit update destroy]
   
   def index

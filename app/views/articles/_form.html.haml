@@ -2,16 +2,19 @@
 = form_with model: article do |f|
   .form-row
     .form-group.col-md-6
-      = f.label :title, 'title'
+      = f.label :title, 'タイトル'
       = f.text_field :title, class: 'form-control'
     .form-group.col-md-6
-      = f.label :name, 'name'
+      = f.label :name, '名前'
       = f.text_field :name, class: 'form-control'
   .form-group
-    = f.label :url, 'url'
+    = f.label :url, 'URL'
     = f.text_field :url, class: 'form-control'
   .form-group
-    = f.label :body, 'body'
+    = f.label :address, '住所'
+    = f.text_field :address, class: 'form-control'
+  .form-group
+    = f.label :body, '詳細'
     = f.text_area :body, class: 'form-control', row: 10
   .form-group
     %span ジャンル

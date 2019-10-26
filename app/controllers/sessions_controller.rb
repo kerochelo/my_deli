@@ -5,12 +5,16 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to mypage_path
     else
-      render 'home/index'
+      redirect_to root_path, flash: {
+        notice: '再度ログインしてください'
+      }
     end
   end
 
   def destroy
     session.delete(:user_id)
-    redirect_to root_path
+    redirect_to root_path, flash: {
+      notice: 'ログアウトしました'
+    }
   end
 end
